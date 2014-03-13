@@ -1,156 +1,162 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using OdeToFood.Models;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Web;
+//using System.Web.Mvc;
+//using OdeToFood.Models;
 
-namespace OdeToFood.Controllers
-{
-    public class ReviewsController : Controller
-    {
-        //
-        // GET: /Reviews/
+//namespace OdeToFood.Controllers
+//{
+//    public class ReviewsController : Controller
+//    {
+//        //
+//        // GET: /Reviews/
 
-        public ActionResult Index()
-        {
-            var model = from r in _reviews
-                        orderby r.Country
-                        select r;
+//        [ChildActionOnly]
+//        public ActionResult BestReview()
+//        {
+//            var bestReview = from r in _reviews
+//                        orderby r.Rating descending
+//                        select r;
 
-            return View(model);
-        }
+//            return PartialView("_Review", bestReview.First());
+//        }
 
-        //
-        // GET: /Reviews/Details/5
+//        public ActionResult Index()
+//        {
+//            var model = from r in _reviews
+//                        orderby r.Country
+//                        select r;
 
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+//            return View(model);
+//        }
 
-        //
-        // GET: /Reviews/Create
+//        //
+//        // GET: /Reviews/Details/5
 
-        public ActionResult Create()
-        {
-            return View();
-        }
+//        public ActionResult Details(int id)
+//        {
+//            return View();
+//        }
 
-        //
-        // POST: /Reviews/Create
+//        //
+//        // GET: /Reviews/Create
 
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
+//        public ActionResult Create()
+//        {
+//            return View();
+//        }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+//        //
+//        // POST: /Reviews/Create
 
-        //
-        // GET: /Reviews/Edit/5
+//        [HttpPost]
+//        public ActionResult Create(FormCollection collection)
+//        {
+//            try
+//            {
+//                // TODO: Add insert logic here
 
-        public ActionResult Edit(int id)
-        {
-            var review = _reviews.Single(r => r.Id == id);
+//                return RedirectToAction("Index");
+//            }
+//            catch
+//            {
+//                return View();
+//            }
+//        }
 
-            return View(review);
-        }
+//        //
+//        // GET: /Reviews/Edit/5
 
-        //
-        // POST: /Reviews/Edit/5
+//        public ActionResult Edit(int id)
+//        {
+//            var review = _reviews.Single(r => r.Id == id);
 
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+//            return View(review);
+//        }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+//        //
+//        // POST: /Reviews/Edit/5
 
-        //
-        // GET: /Reviews/Delete/5
+//        [HttpPost]
+//        public ActionResult Edit(int id, FormCollection collection)
+//        {
+//            var review = _reviews.Single(r => r.Id == id);
+//            if (TryUpdateModel(review))
+//            {
+//                return RedirectToAction("Index");
+//            }
+//            return View(review);
+//        }
 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+//        //
+//        // GET: /Reviews/Delete/5
 
-        //
-        // POST: /Reviews/Delete/5
+//        public ActionResult Delete(int id)
+//        {
+//            return View();
+//        }
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+//        //
+//        // POST: /Reviews/Delete/5
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+//        [HttpPost]
+//        public ActionResult Delete(int id, FormCollection collection)
+//        {
+//            try
+//            {
+//                // TODO: Add delete logic here
 
-        static List<RestaurantReview> _reviews = new List<RestaurantReview>
-        {
-            new RestaurantReview
-            {
-                Id=1,
-                Name="Ming Pong",
-                City="Tempe",
-                Country="USA",
-                Rating=10
-            },
-            new RestaurantReview
-            {
-                Id=2,
-                Name="Ming Pong1",
-                City="Chandler",
-                Country="USA",
-                Rating=5
-            },
-            new RestaurantReview
-            {
-                Id=3,
-                Name="Ming Pong2",
-                City="Tempe",
-                Country="USA",
-                Rating=8
-            },
-            new RestaurantReview
-            {
-                Id=4,
-                Name="Ming Pong3",
-                City="Tempe",
-                Country="USA",
-                Rating=10
-            },
-            new RestaurantReview
-            {
-                Id=5,
-                Name="Ming Pong4",
-                City="Tempe",
-                Country="USA",
-                Rating=1
-            }
-        };
-    }
-}
+//                return RedirectToAction("Index");
+//            }
+//            catch
+//            {
+//                return View();
+//            }
+//        }
+
+//        static List<RestaurantReview> _reviews = new List<RestaurantReview>
+//        {
+//            new RestaurantReview
+//            {
+//                Id=1,
+//                Name="Ming Pong",
+//                City="Tempe",
+//                Country="USA",
+//                Rating=1
+//            },
+//            new RestaurantReview
+//            {
+//                Id=2,
+//                Name="Ming Pong1",
+//                City="Chandler",
+//                Country="USA",
+//                Rating=5
+//            },
+//            new RestaurantReview
+//            {
+//                Id=3,
+//                Name="Ming Pong2",
+//                City="Tempe",
+//                Country="USA",
+//                Rating=8
+//            },
+//            new RestaurantReview
+//            {
+//                Id=4,
+//                Name="Ming Pong3",
+//                City="Tempe",
+//                Country="USA",
+//                Rating=10
+//            },
+//            new RestaurantReview
+//            {
+//                Id=5,
+//                Name="Ming Pong4",
+//                City="Tempe",
+//                Country="USA",
+//                Rating=9
+//            }
+//        };
+//    }
+//}
