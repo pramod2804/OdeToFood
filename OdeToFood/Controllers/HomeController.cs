@@ -11,9 +11,11 @@ namespace OdeToFood.Controllers
     {
         OdeToFoodDb _db = new OdeToFoodDb();
 
-        public ActionResult Index()
+        public ActionResult Index( string searchTerm = null)
         {
-            var model = _db.Restaurants.ToList();
+            var model = from r in _db.Restaurants
+                        orderby r.Name descending
+                        select r;
             return View(model);
         }
 
