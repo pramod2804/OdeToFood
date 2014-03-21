@@ -4,6 +4,11 @@
     ViewBag.Title = "Home Page";
 }
 
+@using (Html.BeginForm("Search", "Home")){    
+         <p> Title: @Html.TextBox("SearchString") <br />   
+         <input type="submit" value="searchTerm" /></p> 
+} 
+
 @foreach (var item in Model)
 {
     <div>
@@ -12,3 +17,8 @@
         <hr />
     </div>
 }
+
+$("#searchTerm").click(function(){
+    $.get('/Home/search', function() {
+    });
+});

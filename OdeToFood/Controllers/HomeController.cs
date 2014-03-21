@@ -13,9 +13,14 @@ namespace OdeToFood.Controllers
 
         public ActionResult Index( string searchTerm = null)
         {
-            var model = from r in _db.Restaurants
-                        orderby r.Name descending
-                        select r;
+            var model = _db.Restaurants;                        
+            return View(model);
+        }
+
+        public ActionResult Search(string searchTerm = null)
+        {
+            //string searchTerm = id;
+            var model = _db.Restaurants.Find(searchTerm);
             return View(model);
         }
 
