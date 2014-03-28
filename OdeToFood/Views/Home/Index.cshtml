@@ -4,11 +4,18 @@
     ViewBag.Title = "Home Page";
 }
 
-@using (Html.BeginForm("Search", "Home")){    
-         <p> Title: @Html.TextBox("SearchString") <br />   
-         <input type="submit" value="searchTerm" /></p> 
-} 
-
+@using (Ajax.BeginForm(
+    new AjaxOptions
+    {
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "restaurantList"
+    }))
+{
+    <input type="search" name="searchTerm" />
+    <input type="submit" value="Search By Name" />
+}   
+<div id="restaurantList">
 @foreach (var item in Model)
 {
     <div>
@@ -17,8 +24,4 @@
         <hr />
     </div>
 }
-
-$("#searchTerm").click(function(){
-    $.get('/Home/search', function() {
-    });
-});
+</div>
